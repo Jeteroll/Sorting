@@ -8,21 +8,30 @@ import java.util.Arrays;
 
 public class BubbleSort {
 	
-//	Initialize sortedInts which stores the final 	
+//	Initialize unsortedInts which stores the input array, tempInts which stores the integers while they are being sorted, 
+//	and sortedInts which stores the final result
+	static int[] unsortedInts;
+	static int[] tempInts;
 	static int[] sortedInts;
 
-//	Constructor which takes an input array and a boolean selector for special debugging messages
+//	Constructor which takes an input array and a boolean selector for special debugging messages, and then sorts the input array
 	public BubbleSort(int[] inputArr, boolean debugSelect) {
-		sort(inputArr, debugSelect);
+		unsortedInts = inputArr;
+		sort(debugSelect);
 	}
 
 //	Main sorting method which uses the bubble sorting algorithm to sort the input array
-	private static int[] sort(int[] unsortedInts, boolean debugMode) {
+	private static int[] sort(boolean debugMode) {
+		
+//		Clone the unsorted array to a temporary array
+		tempInts = unsortedInts.clone(); 
 
 //		Initialize variables, determine the array length that is being inputed and save that to arrLength
-		int arrLength = unsortedInts.length;
+		int arrLength = tempInts.length;
 		int swapInt = 0;
-	
+		
+		int passes = 0;
+		
 //		Set the sortedInts array to have the same length as the array inputed
 		sortedInts = new int[arrLength];
 
@@ -31,7 +40,7 @@ public class BubbleSort {
 
 //		Special message used for debugging purposes
 		if (debugMode == true) {
-			System.out.println("Numbers to be sorted: " + Arrays.toString(unsortedInts) + "\n");
+			System.out.println("Numbers to be sorted: " + Arrays.toString(tempInts) + "\n");
 			System.out.println("_________________________Now Sorting_________________________\n");
 		}
 
@@ -44,18 +53,18 @@ public class BubbleSort {
 
 //			Check each number in the array individually to see if it is less that the previous number, if so, switch the two. If not, continue
 //			to the next number.
-			for (int j = 1; j < arrLength; j++) {
-				if (unsortedInts[j] < unsortedInts[j-1]) {
+			for (int j = 1; j < arrLength - passes; j++) {
+				if (tempInts[j] < tempInts[j-1]) {
 					if (debugMode == true) {
 						
 //						Special message used for debugging purposes
-						System.out.println("Sorting: switched " + unsortedInts[j] + " at index " + (j+1) + " with " + unsortedInts[j-1] + " at index " + (j) + ".");
+						System.out.println("Sorting: switched " + tempInts[j] + " at index " + (j+1) + " with " + tempInts[j-1] + " at index " + (j) + ".");
 					}
 					
 //					Store the previous number in a temporary variable, then switch the two numbers
-					swapInt = unsortedInts[j-1];
-					unsortedInts[j-1] = unsortedInts[j];
-					unsortedInts[j] = swapInt;
+					swapInt = tempInts[j-1];
+					tempInts[j-1] = tempInts[j];
+					tempInts[j] = swapInt;
 					
 //					If the numbers are not in the correct order, set sorted to false. Otherwise, sorted will remain
 //					true and the while loop will exit indicating that the sorting is complete
@@ -63,20 +72,25 @@ public class BubbleSort {
 					
 //					Special message used for debugging purposes
 					if (debugMode == true) {
-						System.out.println("Current state of sorting: " + Arrays.toString(unsortedInts) + "\n");
+						System.out.println("Current state of sorting: " + Arrays.toString(tempInts) + "\n");
 					}
 				}
 			}
 			
+			passes += 1;
+			
 //			Special message used for debugging purposes
 			if (debugMode == true && sorted == false) {
+				if (passes > 1) {
+					System.out.println("Skipped numbers: " + tempInts[arrLength - passes]);
+				}
 				System.out.println("Not yet sorted, continuing sort...\n");
 				System.out.println("-------------------------Resorting-------------------------\n");
 			}
 		}
 
 //		Store the finally sorted array in another array called sortedInts
-		sortedInts = unsortedInts.clone(); 
+		sortedInts = tempInts.clone(); 
 		
 //		Special message used for debugging purposes
 		if (debugMode == true) {
