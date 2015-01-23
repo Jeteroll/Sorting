@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class BubbleSort {
 	
-//	Initialize unsortedNums which stores the input array, tempNums which stores the integers while they are being sorted, 
+//	Initialize unsortedNums which stores the input array, tempNums which stores the numbers while they are being sorted, 
 //	and sortedNums which stores the final result
 	static float[] unsortedNums;
 	static float[] tempNums;
