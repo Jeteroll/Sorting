@@ -82,9 +82,9 @@ public class BubbleSort {
 //			Special message used for debugging purposes
 			if (debugMode == true && sorted == false) {
 				if (passes > 1) {
-					System.out.println("Skipped numbers: " + tempInts[arrLength - passes]);
+					System.out.println("Skipped number: " + tempInts[arrLength  + 1 - passes]);
 				}
-				System.out.println("Not yet sorted, continuing sort...\n");
+				System.out.println("Not yet sorted, continuing sort... " + "[Pass: "+ (passes + 1) + "]\n");
 				System.out.println("-------------------------Resorting-------------------------\n");
 			}
 		}
@@ -111,5 +111,11 @@ public class BubbleSort {
 		for (int l = 0; l < inputStr.length(); l++) {
 			System.out.print("_");
 		}
+	}
+
+// toString method that returns a clean description of this object, ant its properties
+	public String toString() {
+		String bubbleSort = "\nSorting method: bubble, unsorted numbers: " + Arrays.toString(unsortedInts) + ", sorted numbers: " + Arrays.toString(sortedInts) + "\n";
+		return bubbleSort;
 	}
 }
