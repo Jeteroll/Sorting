@@ -30,6 +30,7 @@ public class BubbleSort {
 		int arrLength = tempNums.length;
 		float swapNum = 0;
 		
+//		Initialize a varialbe to count the number of passes
 		int passes = 0;
 		
 //		Set the sortedNums array to have the same length as the array inputed
@@ -81,6 +82,8 @@ public class BubbleSort {
 			
 //			Special message used for debugging purposes
 			if (debugMode == true && sorted == false) {
+				
+//				Check if the loop has made more than one pass, and if so print the number that has been skipped due to optimization 
 				if (passes > 1) {
 					System.out.println("Skipped number: " + tempNums[arrLength  + 1 - passes]);
 				}
@@ -96,7 +99,8 @@ public class BubbleSort {
 		if (debugMode == true) {
 			
 			String resultStr = " Successfully sorted! Result: " + Arrays.toString(sortedNums) + " ";
-			
+		
+//			Print out the final result, encased in underscores for clarity
 			printUnders(resultStr);
 			System.out.println("\n" + resultStr);
 			printUnders(resultStr);
