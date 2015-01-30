@@ -10,9 +10,9 @@ public class BubbleSort {
 	
 //	Initialize unsortedNums which stores the input array, tempNums which stores the numbers while they are being sorted, 
 //	and sortedNums which stores the final result
-	static float[] unsortedNums;
-	static float[] tempNums;
-	static float[] sortedNums;
+	float[] unsortedNums;
+	float[] tempNums;
+	float[] sortedNums;
 
 //	Constructor which takes an input array and a boolean selector for special debugging messages, and then sorts the input array
 	public BubbleSort(float[] inputArr, boolean debugSelect) {
@@ -21,7 +21,7 @@ public class BubbleSort {
 	}
 
 //	Main sorting method which uses the bubble sorting algorithm to sort the input array
-	private static float[] sort(boolean debugMode) {
+	private float[] sort(boolean debugMode) {
 		
 //		Clone the unsorted array to a temporary array
 		tempNums = unsortedNums.clone(); 
@@ -30,7 +30,7 @@ public class BubbleSort {
 		int arrLength = tempNums.length;
 		float swapNum = 0;
 		
-//		Initialize a varialbe to count the number of passes
+//		Initialize a variable to count the number of passes
 		int passes = 0;
 		
 //		Set the sortedNums array to have the same length as the array inputed
