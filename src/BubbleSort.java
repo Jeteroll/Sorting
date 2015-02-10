@@ -47,7 +47,7 @@ public class BubbleSort {
 
 //		Loop one iteration of a bubble sort in which the class checks each number in the array (starting with the second), and 
 //		switches it with the previous number if appropriate until the check determines weather the array is correctly sorted.
-		while (sorted == false) {
+		while(!sorted) {
 
 //			Set the sorted variable to true so that the sorted check will initiate
 			sorted = true;
